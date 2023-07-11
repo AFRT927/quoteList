@@ -15,7 +15,7 @@ class QuoteList extends StatefulWidget {
 class _QuoteListState extends State<QuoteList> {
 
   List<String> quotes = [
-    'Hay alguien tan inteligente que aprende de la experiencia de los demás. Voltaire.',
+    'quien es inteligente que aprende de la experiencia de los demás. Voltaire.',
     'No malgastes tu tiempo, pues de esa materia está formada la vida. Benjamin Franklin.',
     'La buena conciencia es la mejor almohada para dormir. Sócrates.'
     ];
@@ -24,6 +24,37 @@ class _QuoteListState extends State<QuoteList> {
                        Quote(text: 'No malgastes tu tiempo, pues de esa materia está formada la vida', author: 'Benjamin Franklin'),
                        Quote(text: 'La buena conciencia es la mejor almohada para dormir', author: 'Sócrates')
                       ];
+  
+  Widget quoteTemplate( Quote q) {
+
+    return Card(
+      margin: EdgeInsets.fromLTRB(10, 10, 10, 0),      
+      child: Padding(
+        padding: const EdgeInsets.all(12.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch ,
+          children: <Widget>[
+            Text(
+              '${q.text}',
+              style: TextStyle(
+                fontSize: 18,
+                color: Colors.grey[600]
+              ),
+            ),
+            SizedBox(height: 6),
+            Text(
+              '${q.author}',
+              style: TextStyle(
+                fontSize: 18,
+                color: Colors.grey[600]
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+
+  }
  
 
   @override
@@ -37,12 +68,8 @@ class _QuoteListState extends State<QuoteList> {
         backgroundColor: Colors.redAccent,
       ),
       body: Column(
-        children: qList.map((q) => Row(
-          children: [Text(q.text),
-                     SizedBox(width: 10), 
-                     Text(q.author)],
-                                         
-        )).toList(),
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: qList.map((q) => quoteTemplate(q)).toList(),
       ),
     );
   }
