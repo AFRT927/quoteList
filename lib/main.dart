@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'quote.dart';
+import 'quote_card.dart';
 
 void main() => runApp(MaterialApp(
   home: QuoteList()
@@ -13,12 +14,6 @@ class QuoteList extends StatefulWidget {
 }
 
 class _QuoteListState extends State<QuoteList> {
-
-  List<String> quotes = [
-    'quien es inteligente que aprende de la experiencia de los demás. Voltaire.',
-    'No malgastes tu tiempo, pues de esa materia está formada la vida. Benjamin Franklin.',
-    'La buena conciencia es la mejor almohada para dormir. Sócrates.'
-    ];
   
   List<Quote> qList = [Quote(text: 'Hay alguien tan inteligente que aprende de la experiencia de los demás', author: 'Voltaire'),
                        Quote(text: 'No malgastes tu tiempo, pues de esa materia está formada la vida', author: 'Benjamin Franklin'),
@@ -27,32 +22,7 @@ class _QuoteListState extends State<QuoteList> {
   
   Widget quoteTemplate( Quote q) {
 
-    return Card(
-      margin: EdgeInsets.fromLTRB(10, 10, 10, 0),      
-      child: Padding(
-        padding: const EdgeInsets.all(12.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch ,
-          children: <Widget>[
-            Text(
-              '${q.text}',
-              style: TextStyle(
-                fontSize: 18,
-                color: Colors.grey[600]
-              ),
-            ),
-            SizedBox(height: 6),
-            Text(
-              '${q.author}',
-              style: TextStyle(
-                fontSize: 18,
-                color: Colors.grey[600]
-              ),
-            ),
-          ],
-        ),
-      ),
-    );
+    return QuoteCard(q);
 
   }
  
@@ -74,3 +44,5 @@ class _QuoteListState extends State<QuoteList> {
     );
   }
 }
+
+
