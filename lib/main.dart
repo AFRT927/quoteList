@@ -20,11 +20,11 @@ class _QuoteListState extends State<QuoteList> {
                        Quote(text: 'La buena conciencia es la mejor almohada para dormir', author: 'Sócrates')
                       ];
   
-  Widget quoteTemplate( Quote q) {
+  // Widget quoteTemplate( {Quote q, List<Quote> qL) {
 
-    return QuoteCard(q);
+  //   return QuoteCard(quote: q);
 
-  }
+  // }
  
 
   @override
@@ -39,7 +39,11 @@ class _QuoteListState extends State<QuoteList> {
       ),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
-        children: qList.map((q) => quoteTemplate(q)).toList(),
+        children: qList.map((q) => QuoteCard(quote: q, delete:(){
+          setState(() {
+            qList.remove(q);
+          });
+        })).toList(),
       ),
     );
   }

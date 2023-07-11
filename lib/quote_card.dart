@@ -4,9 +4,10 @@ class QuoteCard extends StatelessWidget {
 
   // parameter
   final Quote quote;
+  final Function() delete;
 
   // constructor
-  const QuoteCard(this.quote);
+  const QuoteCard({required this.quote, required this.delete});
 
   @override
   Widget build(BuildContext context) {
@@ -32,6 +33,11 @@ class QuoteCard extends StatelessWidget {
                 color: Colors.grey[600]
               ),
             ),
+            SizedBox(height: 8,),
+            TextButton.icon(
+              onPressed: delete,
+               icon: Icon(Icons.delete),
+                label: Text('Delete'))
           ],
         ),
       ),
